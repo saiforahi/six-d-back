@@ -16,3 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/get-name',function()use($router){
+    return response()->json(['name'=>'tushar']);
+});
