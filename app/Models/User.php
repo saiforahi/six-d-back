@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Spatie\Permission\Traits\HasRoles;
 class User extends Model implements AuthenticatableContract, AuthorizableContract,JWTSubject
 {
-    use Authenticatable, Authorizable, HasFactory,SoftDeletes;
+    use Authenticatable, Authorizable, HasFactory,SoftDeletes,HasRoles;
 
     /**
      * The attributes that are mass assignable.
