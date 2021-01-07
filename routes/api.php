@@ -26,4 +26,13 @@ $router->group(['prefix' => 'company'], function () use ($router) {
     $router->get('get_admin',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
 });
 
+$router->post('/inventory/types','TypeController@store');
+$router->get('/inventory/types', 'TypeController@index');
+$router->get('/inventory/types/{id}', 'TypeController@show');
+$router->post('/inventory/types/delete/{id}', 'TypeController@destroy');
+$router->get('/inventory/types/edit/{id}', 'TypeController@edit');
+$router->post('/inventory/types/update/{id}', 'TypeController@update');
+
+$router->post('/inventory/category', 'CategoryController@store');
+
 
