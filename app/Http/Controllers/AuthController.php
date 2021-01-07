@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use Auth;
 class AuthController extends Controller
 {
+    public function __construct(){
+        $this->middleware('cors');
+    }
     //
     public function login(Request $request){
         try {

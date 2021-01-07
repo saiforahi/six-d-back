@@ -12,10 +12,4 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
-$router->get('/get-name',function()use($router){
-    return response()->json(['name'=>'tushar']);
-});
+$router->get('/',['middleware'=>'cors','uses'=>'HomeController@get_root']);

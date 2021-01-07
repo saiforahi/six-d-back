@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
 class CompanyController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('cors');
+    }
     public function create_admin(Request $request){
         $this->validate($request,[
             'user_id'=>'required|exists:users,id',
