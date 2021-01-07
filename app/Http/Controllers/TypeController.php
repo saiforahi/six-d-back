@@ -12,11 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
        $type=Type::get();
@@ -105,7 +101,7 @@ class TypeController extends Controller
 
         return response()->json([
             'status'=>true,
-            'type'=>$type
+            'message'=>'Category is updated.'
         ], 200);
     }
 

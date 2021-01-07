@@ -34,5 +34,9 @@ $router->get('/inventory/types/edit/{id}', 'TypeController@edit');
 $router->post('/inventory/types/update/{id}', 'TypeController@update');
 
 $router->post('/inventory/category', 'CategoryController@store');
-
+$router->get('/inventory/category', 'CategoryController@index');
+$router->get('/inventory/category/{id}', 'CategoryController@show');
+$router->post('/inventory/category/delete/{id}', 'CategoryController@destroy');
+$router->get('/inventory/category/edit/{id}', 'CategoryController@edit');
+$router->post('/inventory/category/update/{id}', 'CategoryController@update');
 
