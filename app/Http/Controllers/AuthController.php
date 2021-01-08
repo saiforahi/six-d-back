@@ -11,7 +11,7 @@ use Auth;
 class AuthController extends Controller
 {
     public function __construct(){
-        $this->middleware('cors');
+        //$this->middleware('cors');
     }
     //
     public function login(Request $request){
@@ -22,23 +22,23 @@ class AuthController extends Controller
             ]);
             $user = User::where('email', $request->username)->first();
             if ( ! Hash::check($request->password, $user->password, [])) {
-                return response()->json(['error'=>'wrong password']);
+                return response()->json(['status'=>false,'message'=>'wrong password']);
             }
             $new_token = Hash::make(Str::random(80));
             $user->forceFill([
                 'api_token' => $new_token,
             ])->save();
             return response()->json([
-                'status_code' => 200,
+                'status' => true,
                 'api_token' => $user->api_token,
                 'message'=>'Successfully logged in'
-            ]);
+            ],200);
         } catch (Exception $error) {
             return response()->json([
-                'status_code' => 500,
+                'status' => false,
                 'message' => 'Error in Login',
                 'error' => $error,
-            ]);
+            ],500);
         }
     }
     public function register(Request $request){
