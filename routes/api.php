@@ -15,7 +15,7 @@
 $router->get('/key', function() {
     return \Illuminate\Support\Str::random(32);
 });
-$router->post('/login',['middleware'=>'cors','uses'=>'AuthController@login']);
+$router->post('/login','AuthController@login');
 $router->post('/register','AuthController@register');
 $router->post('/logout',['middleware'=>'auth','uses'=>'AuthController@logout']);
 $router->group(['prefix' => 'user'], function () use ($router) {

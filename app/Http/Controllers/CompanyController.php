@@ -10,7 +10,7 @@ class CompanyController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('cors');
+        //$this->middleware('cors');
     }
     public function create_admin(Request $request){
         $this->validate($request,[

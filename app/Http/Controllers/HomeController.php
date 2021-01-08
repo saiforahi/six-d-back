@@ -11,7 +11,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('cors');
+        //$this->middleware('cors');
     }
     public function get_root(){
         return 'Welcome To Saia';
