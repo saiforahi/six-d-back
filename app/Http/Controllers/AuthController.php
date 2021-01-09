@@ -68,6 +68,6 @@ class AuthController extends Controller
         //Auth::guard('web')->logout();
         $user->api_token=null;
         $user->save();
-        return response()->json(['success'=>'logged out']);
+        return response()->json(['status'=>true,'message'=>'logged out']);
     }
 }
