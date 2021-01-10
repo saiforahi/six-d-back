@@ -21,6 +21,12 @@ $router->post('/logout',['middleware'=>'auth','uses'=>'AuthController@logout']);
 $router->group(['prefix' => 'user'], function () use ($router) {
     $router->get('details', ['middleware'=>'auth','uses'=>'AuthController@get_user_details']);
 });
+
+$router->group(['prefix' => 'role'],function () use ($router){
+    $router->get('all',['middleware'=>'auth','uses'=>'Authorization\RoleController@get_all_roles']);
+    $router->post('create',['middleware' => 'auth','uses' => 'Authorization\RoleController@store']);
+});
+
 $router->group(['prefix' => 'company'], function () use ($router) {
     $router->post('create_admin', ['middleware'=>'auth','uses'=>'CompanyController@create_admin']);
     $router->get('get_admin',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
