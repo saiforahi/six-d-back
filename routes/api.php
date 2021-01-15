@@ -25,6 +25,8 @@ $router->group(['prefix' => 'user'], function () use ($router) {
 $router->group(['prefix' => 'role'],function () use ($router){
     $router->get('all',['middleware'=>'auth','uses'=>'Authorization\RoleController@get_all_roles']);
     $router->post('create',['middleware' => 'auth','uses' => 'Authorization\RoleController@store']);
+    $router->put('update/{id}',['middleware' => 'auth','uses' => 'Authorization\RoleController@update']);
+    $router->delete('delete/{id}',['middleware' => 'auth','uses' => 'Authorization\RoleController@destroy']);
 });
 
 $router->group(['prefix' => 'company'], function () use ($router) {
