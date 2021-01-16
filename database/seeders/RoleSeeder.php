@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\UserSeeder;
-use Database\Seeders\RoleSeeder;
-class DatabaseSeeder extends Seeder
+use Spatie\Permission\Models\Role;
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RoleSeeder::class);
-        $this->call(UserSeeder::class);
+        //
+        Role::create([
+            'name'=>'Super Admin',
+            'guard_name'=>''
+        ]);
     }
 }
