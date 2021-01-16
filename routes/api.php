@@ -29,6 +29,18 @@ $router->group(['prefix' => 'role'],function () use ($router){
     $router->delete('delete/{id}',['middleware' => 'auth','uses' => 'Authorization\RoleController@destroy']);
 });
 
+$router->group(['prefix' => 'permission'],function () use ($router){
+    $router->post('create',['middleware' => 'auth','uses'=>'Authorization\PermissionController@store']);
+    $router->get('all_permissions',['middleware' => 'auth','uses' => 'Authorization\PermissionController@all_permissions']);
+    $router->delete('delete/{id}',['middleware' => 'auth','uses' => 'Authorization\PermissionController@destroy']);
+});
+
+$router->group(['prefix' => 'user'],function () use ($router){
+    $router->get('all_users',['middleware' => 'auth','uses' => 'Authorization\UserController@all_users']);
+    $router->post('store',['middleware' => 'auth','uses' => 'Authorization\UserController@store']);
+    $router->delete('delete/{id}',['middleware' => 'auth','uses' => 'Authorization\UserController@destroy']);
+});
+
 $router->group(['prefix' => 'company'], function () use ($router) {
     $router->post('create_admin', ['middleware'=>'auth','uses'=>'CompanyController@create_admin']);
     $router->get('get_admin',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
