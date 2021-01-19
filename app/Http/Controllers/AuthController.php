@@ -63,9 +63,16 @@ class AuthController extends Controller
     public function get_user_details(){
         return Auth::user();
     }
+    public function get_user_permissions(){
+        return Auth::user()->getAllPermissions() ;
+    }
+    public function get_user_roles(){
+        return Auth::user()->getRoleNames();
+    }
     public function logout(){
         $user=Auth::user();
         //Auth::guard('web')->logout();
+        $this->guard()->logout();
         $user->api_token=null;
         $user->save();
         return response()->json(['status'=>true,'message'=>'logged out']);

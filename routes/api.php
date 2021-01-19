@@ -18,8 +18,11 @@ $router->get('/key', function() {
 $router->post('/login','AuthController@login');
 $router->post('/register','AuthController@register');
 $router->post('/logout',['middleware'=>'auth','uses'=>'AuthController@logout']);
+
 $router->group(['prefix' => 'user'], function () use ($router) {
     $router->get('details', ['middleware'=>'auth','uses'=>'AuthController@get_user_details']);
+    $router->get('permissions',['middleware'=>'auth','uses'=>'AuthController@get_user_permissions']);
+    $router->get('roles',['middleware'=>'auth','uses'=>'AuthController@get_user_roles']);
 });
 
 $router->group(['prefix' => 'role'],function () use ($router){
@@ -43,7 +46,9 @@ $router->group(['prefix' => 'user'],function () use ($router){
 
 $router->group(['prefix' => 'company'], function () use ($router) {
     $router->post('create_admin', ['middleware'=>'auth','uses'=>'CompanyController@create_admin']);
-    $router->get('get_admin',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
+    $router->get('admin/{company_id}',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
+    $router->get('all',['middleware'=>'auth','uses'=>'CompanyController@get_all_companies']);
+    $router->post('create',['middleware'=>'auth','uses'=>'CompanyController@create_company']);
 });
 
 
