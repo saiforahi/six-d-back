@@ -98,9 +98,17 @@ $app->routeMiddleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
+//jwt
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+//artisan
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);//to run laravel artisan commands
-
+//mail service
+$app->register(Illuminate\Mail\MailServiceProvider::class);
+$app->configure('mail');
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+//spatie
 $app->configure('permission');
 $app->alias('cache', \Illuminate\Cache\CacheManager::class);  // if you don't have this already
 $app->register(Spatie\Permission\PermissionServiceProvider::class);

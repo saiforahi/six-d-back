@@ -48,7 +48,9 @@ $router->group(['prefix' => 'company'], function () use ($router) {
     $router->post('create_admin', ['middleware'=>'auth','uses'=>'CompanyController@create_admin']);
     $router->get('admin/{company_id}',['middleware'=>'auth','uses'=>'CompanyController@get_admin']);
     $router->get('all',['middleware'=>'auth','uses'=>'CompanyController@get_all_companies']);
-    $router->post('create',['middleware'=>'auth','uses'=>'CompanyController@create_company']);
+    $router->post('create',['middleware'=>['role:super-admin','auth'],'uses'=>'CompanyController@create_company']);
+    $router->delete('delete/{company_id}',['middleware'=>'auth','uses'=>'CompanyController@delete_company']);
+    $router->put('update/{company_id}',['middleware'=>'auth','uses'=>'CompanyController@update_company']);
 });
 
 

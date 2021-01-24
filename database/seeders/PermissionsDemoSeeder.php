@@ -38,7 +38,7 @@ class PermissionsDemoSeeder extends Seeder
         $role1->givePermissionTo('read users');
         $role1->givePermissionTo('read companies');
 
-        // $role2 = Role::create(['name' => 'admin']);
+        $role2 = Role::create(['name' => 'company-admin']);
         // $role2->givePermissionTo('publish articles');
         // $role2->givePermissionTo('unpublish articles');
 

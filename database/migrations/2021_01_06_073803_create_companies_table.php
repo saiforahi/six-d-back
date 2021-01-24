@@ -16,8 +16,17 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('email')->nullable()->unique();
+            $table->string('phone')->nullable()->unique();
+            $table->string('inc_no')->nullable()->unique();
+            $table->string('trade_license_no')->nullable()->unique();
+            $table->string('TIN')->nullable()->unique();
+            $table->string('BIN')->nullable()->unique();
             $table->json('address')->nullable();
+            $table->date('period_from')->nullable();
+            $table->date('period_to')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

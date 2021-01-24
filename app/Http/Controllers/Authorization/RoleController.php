@@ -9,13 +9,12 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
     public function get_all_roles(){
-        return response()->json(['roles'=>Role::all()]);
+        return response()->json(['roles'=>Role::where('name','!=','super-admin')->get()]);
     }
     public function store(Request $request){
         $this->validate($request,[
             'name' => 'required|unique:roles',
         ]);
-
         $role = new Role();
         $role->name = $request->name;
         $role->save();
@@ -29,7 +28,6 @@ class RoleController extends Controller
         $this->validate($request,[
             'name' => 'required',
         ]);
-
         $role = Role::findOrFail($id);
         $role->name = $request->name;
         $role->save();
@@ -40,9 +38,7 @@ class RoleController extends Controller
     }
 
     public function destroy($id){
-     Role::findOrFail($id)->delete();
-
-            return response()->json(['status'=>true,'message'=>'Role Deleted successfully'],200);
-
+        Role::findOrFail($id)->delete();
+        return response()->json(['status'=>true,'message'=>'Role Deleted successfully'],200);
     }
 }
