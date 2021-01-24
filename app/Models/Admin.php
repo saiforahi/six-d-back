@@ -11,6 +11,7 @@ class Admin extends Model
     protected $table="admins";
     protected $fillable=['user_id','company_id'];
     protected $dates=['created_at','updated_at'];
+    protected $guarded = [];
     protected $casts=[
         'created_at'=>'date:d-M-Y',
         'updated_at'=>'date:d-M-Y'
@@ -20,6 +21,6 @@ class Admin extends Model
         return $this->hasOne(Company::class,'id','company_id');
     }
     public function user(){
-        return $this->belongsTo(User::class,'id','user_id');
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }
