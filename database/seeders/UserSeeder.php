@@ -23,6 +23,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
         ]);
         $user=User::where('email','admin@mail.com')->first();
-        $user->assignRole('Super Admin');
+        $user->assignRole('Super-Admin');
     }
 }
