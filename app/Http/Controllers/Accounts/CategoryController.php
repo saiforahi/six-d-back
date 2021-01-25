@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->service_id = Service::where('name','Accounts')->pluck('id')->first();
-        $category->company_id = Auth::user()->admin->company;
+        $category->company_id = Auth::user()->admin->company->id; //getting id from company object
         $category->status = $request->status;
         $category->created_by = Auth::user()->id;
         $category->updated_by = Auth::user()->id;

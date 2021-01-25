@@ -13,3 +13,4 @@
 |
 */
 $router->get('/','HomeController@get_root');
+$router->get('/test',['middleware'=>'auth','uses'=>'HomeController@test']);

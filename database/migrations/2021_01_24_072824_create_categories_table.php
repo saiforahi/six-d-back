@@ -19,8 +19,8 @@ class CreateCategoriesTable extends Migration
             $table->foreignId('service_id')->constrained();
             $table->foreignId('company_id')->constrained()->nullable();
             $table->enum('status',['active','inactive'])->default('active');
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
