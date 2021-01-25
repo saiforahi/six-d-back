@@ -67,4 +67,3 @@ $router->group(['prefix' => 'service'], function () use ($router) {
     $router->get('all/{company_id}',['middleware'=>'auth','uses'=>'Accounts\CategoryController@get_all_categories_of_a_company']);
 });
 
-
