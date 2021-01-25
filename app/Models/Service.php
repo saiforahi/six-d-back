@@ -8,6 +8,5 @@ class Service extends Model
 {
     //
     protected $table="services";
-    protected $fillable=['name','status'];
-    
+    protected $fillable=['name','status','created_by','updated_by'];
 }
