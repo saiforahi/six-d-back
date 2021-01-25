@@ -60,4 +60,10 @@ $router->group(['prefix' => 'category'], function () use ($router) {
     $router->get('all/{company_id}',['middleware'=>'auth','uses'=>'Accounts\CategoryController@get_all_categories_of_a_company']);
 });
 
+$router->group(['prefix' => 'service'], function () use ($router) {
+    $router->post('create', ['middleware'=>'auth','uses'=>'Accounts\CategoryController@create']);
+    $router->get('services',['middleware'=>'auth','uses'=>'Accounts\CategoryController@get_all_services']);
+    $router->put('update/{id}',['middleware'=>'auth','uses'=>'Accounts\CategoryController@update']);
+    $router->get('all/{company_id}',['middleware'=>'auth','uses'=>'Accounts\CategoryController@get_all_categories_of_a_company']);
+});
 
